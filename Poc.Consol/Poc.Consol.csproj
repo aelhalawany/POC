@@ -74,10 +74,6 @@
       <Project>{3dfa8e64-e0b1-4654-8b82-a563c76e9df1}</Project>
       <Name>Poc.Bll</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Poc.Dal\Poc.Dal.csproj">
-      <Project>{b62d1e54-d3fe-4e46-b1d4-00cfa18137f5}</Project>
-      <Name>Poc.Dal</Name>
-    </ProjectReference>
     <ProjectReference Include="..\Poc.Model\Poc.Model.csproj">
       <Project>{614e32dd-e5c9-4a6e-964a-5d0b90853cee}</Project>
       <Name>Poc.Model</Name>
