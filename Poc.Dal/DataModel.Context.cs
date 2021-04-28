@@ -20,7 +20,7 @@ namespace Poc.Dal
             : base("name=POCEntities")
         {
             this.Configuration.ProxyCreationEnabled = false;
-             this.Configuration.LazyLoadingEnabled = false;
+            this.Configuration.LazyLoadingEnabled = true;
            
         }
     

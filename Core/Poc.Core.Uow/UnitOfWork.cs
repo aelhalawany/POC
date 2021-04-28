@@ -1,4 +1,6 @@
-﻿using Poc.Repository;
+﻿
+using Poc.Core.Entity;
+using Poc.Core.Repository;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -8,7 +10,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Poc.Repository
+namespace Poc.Core.Uow
 {
     public class UnitOfWork : IUnitOfWork
     {

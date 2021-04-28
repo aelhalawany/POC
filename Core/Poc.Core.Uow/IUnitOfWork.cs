@@ -4,8 +4,10 @@
 // </copyright>
 // --------------------------------------------------------------------------------------------------------------------
 
-namespace Poc.Repository
+namespace Poc.Core.Uow
 {
+    using Poc.Core.Entity;
+    using Poc.Core.Repository;
     #region
 
     using System;
@@ -14,9 +16,7 @@ namespace Poc.Repository
 
     #endregion
 
-    /// <summary>
-    ///     http://codereview.stackexchange.com/questions/19037/entity-framework-generic-repository-pattern
-    /// </summary>
+  
     public interface IUnitOfWork : IDisposable
     {
         /// <summary>

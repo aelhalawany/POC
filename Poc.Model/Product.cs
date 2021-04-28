@@ -10,11 +10,11 @@
 namespace Poc.Model
 {
      
-    using System;
+    using Poc.Core.Entity;using System;
     using System.Collections.Generic;
     
     [Serializable]
-    public partial class Product
+    public partial class Product:BaseEntity 
     {
         public System.Guid ProductId { get; set; }
         public int CategoryId { get; set; }

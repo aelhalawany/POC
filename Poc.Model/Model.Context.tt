@@ -25,7 +25,7 @@ foreach (var entity in typeMapper.GetItemsToGenerate<EntityType>(itemCollection)
 #> 
 <#=codeStringGenerator.UsingDirectives(inHeader: false)#>
 [Serializable]
-<#=codeStringGenerator.EntityClassOpening(entity)#>
+<#=codeStringGenerator.EntityClassOpening(entity) +":BaseEntity"#> 
 {
 <#
     var propertiesWithDefaultValues = typeMapper.GetPropertiesWithDefaultValues(entity);
@@ -36,7 +36,7 @@ foreach (var entity in typeMapper.GetItemsToGenerate<EntityType>(itemCollection)
     {
 #>
     [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-    public <#=code.Escape(entity)#>()
+    public <#=code.Escape(entity)#>() 
     {
 <#
         foreach (var edmProperty in propertiesWithDefaultValues)
@@ -426,6 +426,7 @@ public class CodeStringGenerator
         return inHeader == string.IsNullOrEmpty(_code.VsNamespaceSuggestion())
             ? string.Format(
                 CultureInfo.InvariantCulture,
+                "using Poc.Core.Entity;"+
                 "{0}using System;{1}" +
                 "{2}",
                 inHeader ? Environment.NewLine : "",

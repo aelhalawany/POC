@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Poc.Core.Entity;
+using System;
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Data.Entity.Infrastructure;
@@ -6,26 +7,16 @@ using System.Linq;
 using System.Linq.Expressions;
 using System.Threading.Tasks;
 
-namespace Poc.Repository
+namespace Poc.Core.Repository
 {
    
     public  class BaseRepository<T> : IRepository<T> where T : BaseEntity
     {
-        /// <summary>
-        /// Initializes a new instance of the <see cref="RepositoryBase{T}"/> class.
-        /// </summary>
-        /// <param name="context">
-        /// The context.
-        /// </param>
         public BaseRepository(DbContext context)
         {
             this.Context = context;
             this.DbSet = context.Set<T>();
         }
-
-        /// <summary>
-        ///     Gets the context.
-        /// </summary>
         private DbContext Context { get; }
 
         /// <summary>
@@ -33,15 +24,6 @@ namespace Poc.Repository
         /// </summary>
         private DbSet<T> DbSet { get; }
 
-        /// <summary>
-        /// The add.
-        /// </summary>
-        /// <param name="entity">
-        /// The entity.
-        /// </param>
-        /// <returns>
-        /// The <see cref="T"/>.
-        /// </returns>
         public virtual T Add(T entity)
         {
             var addedEntity = this.DbSet.Add(entity);
@@ -54,15 +36,7 @@ namespace Poc.Repository
             return null;
         }
 
-        /// <summary>
-        /// The add.
-        /// </summary>
-        /// <param name="entities">
-        /// The entities.
-        /// </param>
-        /// <returns>
-        /// The <see cref="IEnumerable"/>.
-        /// </returns>
+       
         public virtual IEnumerable<T> Add(IEnumerable<T> entities)
         {
             var added = this.DbSet.AddRange(entities);
@@ -70,13 +44,6 @@ namespace Poc.Repository
         }
 
        
-
-        /// <summary>
-        ///     The count.
-        /// </summary>
-        /// <returns>
-        ///     The <see cref="long" />.
-        /// </returns>
         public virtual long Count()
         {
             return this.DbSet.Count();

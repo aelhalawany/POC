@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 namespace Poc.Repository
 {
     public interface IRepository<T>
-        where T : class
+        where T : BaseEntity
     {
         /// <summary>
         ///     Gets the context.

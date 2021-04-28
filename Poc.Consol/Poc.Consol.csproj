@@ -63,6 +63,11 @@
   <ItemGroup>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Resource1.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resource1.resx</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
@@ -70,6 +75,10 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Core\Poc.Core.ActionResult\Poc.Core.ActionResult.csproj">
+      <Project>{9BDD9545-58D1-44F8-8F2E-36206686EDCB}</Project>
+      <Name>Poc.Core.ActionResult</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Poc.Bll\Poc.Bll.csproj">
       <Project>{3dfa8e64-e0b1-4654-8b82-a563c76e9df1}</Project>
       <Name>Poc.Bll</Name>
@@ -78,13 +87,15 @@
       <Project>{614e32dd-e5c9-4a6e-964a-5d0b90853cee}</Project>
       <Name>Poc.Model</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Poc.Repository\Poc.Repository.csproj">
-      <Project>{d1071d82-43bf-48ed-b390-b85187038d5f}</Project>
-      <Name>Poc.Repository</Name>
-    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resource1.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resource1.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

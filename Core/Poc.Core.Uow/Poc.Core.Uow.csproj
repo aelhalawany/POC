@@ -1,15 +1,15 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-  <Import Project="..\packages\EntityFramework.6.4.4\build\EntityFramework.props" Condition="Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.props')" />
+  <Import Project="..\..\packages\EntityFramework.6.4.4\build\EntityFramework.props" Condition="Exists('..\..\packages\EntityFramework.6.4.4\build\EntityFramework.props')" />
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{3DFA8E64-E0B1-4654-8B82-A563C76E9DF1}</ProjectGuid>
+    <ProjectGuid>{07CD91B9-505F-418A-98C8-8D648C458EF0}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Poc.Bll</RootNamespace>
-    <AssemblyName>Poc.Bll</AssemblyName>
+    <RootNamespace>Poc.Core.Uow</RootNamespace>
+    <AssemblyName>Poc.Core.Uow</AssemblyName>
     <TargetFrameworkVersion>v4.7</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
@@ -41,15 +41,14 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
-      <HintPath>..\packages\EntityFramework.6.4.4\lib\net45\EntityFramework.dll</HintPath>
+      <HintPath>..\..\packages\EntityFramework.6.4.4\lib\net45\EntityFramework.dll</HintPath>
     </Reference>
     <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
-      <HintPath>..\packages\EntityFramework.6.4.4\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <HintPath>..\..\packages\EntityFramework.6.4.4\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
-    <Reference Include="System.Web" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -58,36 +57,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Entities.cs" />
-    <Compile Include="IProductService.cs" />
-    <Compile Include="ProductExt.cs" />
-    <Compile Include="ProductService.cs" />
+    <Compile Include="IUnitOfWork.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="UnitOfWork.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
-  </ItemGroup>
-  <ItemGroup />
-  <ItemGroup>
-    <ProjectReference Include="..\Core\Poc.Core.ActionResult\Poc.Core.ActionResult.csproj">
-      <Project>{9bdd9545-58d1-44f8-8f2e-36206686edcb}</Project>
-      <Name>Poc.Core.ActionResult</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Core\Poc.Core.Entity\Poc.Core.Entity.csproj">
-      <Project>{94AB7095-6D8C-4286-80AF-C1BE03750365}</Project>
+    <ProjectReference Include="..\Poc.Core.Entity\Poc.Core.Entity.csproj">
+      <Project>{94ab7095-6d8c-4286-80af-c1be03750365}</Project>
       <Name>Poc.Core.Entity</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Core\Poc.Core.Repository\Poc.Core.Repository.csproj">
-      <Project>{3C1F87F4-332A-43C5-A8B8-AA133383C7AC}</Project>
+    <ProjectReference Include="..\Poc.Core.Repository\Poc.Core.Repository.csproj">
+      <Project>{3c1f87f4-332a-43c5-a8b8-aa133383c7ac}</Project>
       <Name>Poc.Core.Repository</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Core\Poc.Core.Uow\Poc.Core.Uow.csproj">
-      <Project>{07CD91B9-505F-418A-98C8-8D648C458EF0}</Project>
-      <Name>Poc.Core.Uow</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Poc.Model\Poc.Model.csproj">
-      <Project>{614e32dd-e5c9-4a6e-964a-5d0b90853cee}</Project>
-      <Name>Poc.Model</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
@@ -100,8 +81,8 @@
     <PropertyGroup>
       <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
     </PropertyGroup>
-    <Error Condition="!Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\EntityFramework.6.4.4\build\EntityFramework.props'))" />
-    <Error Condition="!Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\EntityFramework.6.4.4\build\EntityFramework.targets'))" />
+    <Error Condition="!Exists('..\..\packages\EntityFramework.6.4.4\build\EntityFramework.props')" Text="$([System.String]::Format('$(ErrorText)', '..\..\packages\EntityFramework.6.4.4\build\EntityFramework.props'))" />
+    <Error Condition="!Exists('..\..\packages\EntityFramework.6.4.4\build\EntityFramework.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\..\packages\EntityFramework.6.4.4\build\EntityFramework.targets'))" />
   </Target>
-  <Import Project="..\packages\EntityFramework.6.4.4\build\EntityFramework.targets" Condition="Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.targets')" />
+  <Import Project="..\..\packages\EntityFramework.6.4.4\build\EntityFramework.targets" Condition="Exists('..\..\packages\EntityFramework.6.4.4\build\EntityFramework.targets')" />
 </Project>

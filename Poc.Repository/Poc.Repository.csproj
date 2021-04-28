@@ -57,6 +57,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AuditableEntity.cs" />
+    <Compile Include="Status.cs" />
+    <Compile Include="IActionResult.cs" />
     <Compile Include="Extensions.cs" />
     <Compile Include="UnitOfWork.cs" />
     <Compile Include="IRepository.cs" />
